@@ -1,0 +1,18 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block contenido %}
+    <form action="alumno_curso" method="POST">
+        {% csrf_token %}
+        <p>Nombre:</p>
+        <input type="text" name="nombre" required>
+        <p>Año</p>
+        <input type="number" name="año" required>
+        
+        <button>Enviar</button>
+    </form>
+
+
+
+
+{%  endblock %}

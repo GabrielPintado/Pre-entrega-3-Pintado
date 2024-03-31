@@ -1,0 +1,38 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block contenido %}
+    <main class="container">
+        <h1 class="text-center">Lista de profesores</h1>
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'profesores_curso' %}" class="btn btn-primary btn-sm">NUEVO PROFESOR</a>
+            <a href="{% url 'buscar_profesores' %}" class="btn btn-primary btn-sm">BUSCAR PROFESOR</a>
+        </div>
+            
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Curso</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for profesor in profesores %}
+                <tr>
+                    <td>{{ profesor.id }}</td>
+                    <td>{{ profesor.nombre }}</td>
+                    <td>{{ profesor.curos }}</td>
+                    <td><a href="{% url 'elimina_profesor' profesor.id %}" class="btn btn-danger">BORRAR</a></td>
+                    <td><a href="{% url 'editar_profesor' profesor.id %}" class="btn btn-warning btn-sm" id="editarBtn">EDITAR</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,40 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+    
+<main class="container">
+    <h1 class="text-center">Lista de alumnos</h1>
+    <div class="d-flex justify-content-between">
+        <a href="alumno_curso" class="btn btn-primary btn-sm">NUEVO ALUMNOS</a>
+        <div>
+            <a href="buscar_alumno" class="btn btn-primary btn-sm">BUSCAR ALUMNO</a>
+        </div>
+    </div>
+        
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>año</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in alumnos %}
+            <tr>
+                <th scope="row">{{ alumno.id }}</th>
+                <td>{{ alumno.nombre }}</td>
+                <td>{{ alumno.año }}</td>
+                <td><a href="{% url 'elimina_alumno' alumno.id %}" class="btn btn-danger">BORRAR</a></td>
+                <td><a href="{% url 'editar_alumno' alumno.id %}" class="btn btn-warning btn-sm">EDITAR</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+
+{% endblock %}
+

@@ -1,0 +1,35 @@
+{% extends 'padre.html' %}
+{% load static %}
+
+{% block contenido %}
+<main class="container">
+    <h1 class="text-center">Cursos</h1>
+    <div class="d-flex justify-content-between">
+        <a href="{% url 'alta_curso' %}" class="btn btn-primary btn-sm">NUEVO CURSO</a>
+        <div>
+            <a href="{% url 'buscar_curso' %}" class="btn btn-primary btn-sm">BUSCAR CURSO</a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>camada</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for n in cursos %}
+            <tr>
+                <th scope="row">{{n.id}}</th>
+                <td>{{n.nombre}}</td>
+                <td>{{n.camada}}</td>
+                <td><a href="{% url 'elimina_curso' n.id %}" class="btn btn-danger">BORRAR</a></td>
+                <td><a href="{% url 'editar_curso' n.id %}" class="btn btn-warning btn-sm">EDITAR</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
